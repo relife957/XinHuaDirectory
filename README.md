@@ -9,7 +9,9 @@
 就想做一个在终端使用的新华字典,但是能力受限,
 并没有做成ydcv一样的效果,只是做成了脚本形式,
 以后一定改成真正的终端模式
-
+### 效果图
+效果图在github上不好看，可以在博客上看一下
+[博客](https://blog.csdn.net/qq_36865108/article/details/81951357)
 ## 使用
 在XinHuaDirectory/下有个脚本start.sh,
 在bash下,先给start.sh权限,chomd +x ./start.sh ,
