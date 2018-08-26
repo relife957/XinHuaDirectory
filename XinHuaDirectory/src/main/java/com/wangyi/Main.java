@@ -1,16 +1,14 @@
 package com.wangyi;
 
 import com.alibaba.fastjson.JSONArray;
-import com.alibaba.fastjson.JSONObject;
 import com.wangyi.DealJson.ToJson;
 import com.wangyi.HttpRequest.RequestData;
 import com.wangyi.bean.IdiomBean;
 import com.wangyi.bean.WordBean;
 import com.wangyi.bean.XiehouyuBean;
-import org.apache.http.HttpRequest;
-import org.apache.http.protocol.HTTP;
 
 import java.util.Iterator;
+import java.util.Scanner;
 
 /**
  * 主类
@@ -37,9 +35,8 @@ public class Main {
         }
         return clazz ;
     }
-    public static void main(String[] args) {
-        String type = "idiom2";
-        String value = "hmrs";
+
+    public static void print(String type,String value){
         Class clazz = getClass(type) ;
         String url = RequestData.makeurl(type,value);
         Iterator iterator = null ;
@@ -54,6 +51,19 @@ public class Main {
         while (iterator.hasNext()){
             System.out.println(iterator.next().toString());
             System.out.println();
+        }
+    }
+    public static void main(String[] args) {
+        String type = args[0] ;
+        String value ;
+        Scanner scanner = new Scanner(System.in) ;
+        while (true){
+            System.out.print(">");
+            value = scanner.nextLine();
+            if (value.equalsIgnoreCase(":quit")){
+                break;
+            }
+            print(type,value);
         }
     }
 }

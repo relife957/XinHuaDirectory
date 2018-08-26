@@ -1,7 +1,7 @@
 package com.wangyi.DealJson;
 
 import com.alibaba.fastjson.JSONArray;
-import com.wangyi.bean.* ;
+import com.alibaba.fastjson.JSONException;
 import com.alibaba.fastjson.JSONObject;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -42,7 +42,12 @@ public class ToJson {
 
     public static JSONArray getJsonArray(String str){
         str = str.trim() ;
-        JSONArray jsonArray = JSONArray.parseArray(str);
+        JSONArray jsonArray = null ;
+        try{
+            jsonArray = JSONArray.parseArray(str);
+        }catch (JSONException e){
+            System.out.println("请检查您的输入参数 | 你查询的信息不存在!");
+        }
         return jsonArray ;
     }
 
@@ -61,6 +66,9 @@ public class ToJson {
     public static <T> List<T> getBeanArray(JSONArray jsonArray ,
                                        Class<T> clazz) throws Exception{
         List<T> ts = new ArrayList<>();
+        if(jsonArray == null){
+            return ts ;
+        }
         for (Object obj : jsonArray){
             JSONObject jsonObject = (JSONObject)obj ;
             ts.add(jsonToBean(jsonObject,clazz));
