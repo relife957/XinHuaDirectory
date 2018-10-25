@@ -1,6 +1,9 @@
 # XinHuaDirectory
 可以在终端使用的新华字典
 
+## 新增Python版本
+Python的版本较为简单,因为本来就是一个脚本,所以使用的话,直接使用chmod a+x 新华字典.py,然后./新华字典.py就可以使用了
+
 ## api接口
 该程序使用的api接口是[chinese-xinhua](https://github.com/pwxcoo/chinese-xinhua)提供的
 
